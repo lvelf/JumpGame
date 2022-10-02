@@ -79,7 +79,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         scoreLabel.font = UIFont(name: "HelveticaNeue", size: 30.0)
         scoreLabel.textColor = .white
         sceneView.addSubview(scoreLabel)
-        
+        print("here")
         restartGame()
     }
     
@@ -98,6 +98,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
         bottleNode.removeFromParentNode()
         boxNodes.removeAll()
+        print("removed")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
