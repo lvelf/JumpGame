@@ -25,7 +25,7 @@ class BottleNode: SCNNode {
     }()
     
     lazy var sphereNode: SCNNode = {
-        let sphere = SCNSphere()
+        let sphere = SCNSphere(radius: 0.01)
         sphere.materials = [myMaterial]
         return SCNNode(geometry: sphere)
     }()

@@ -24,7 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     private var touchTimePair: (begin: TimeInterval, end: TimeInterval) = (0, 0)
     private let distanceCalculateClosure: (TimeInterval) -> CGFloat = {
-        return CGFloat($0) / 4.0
+        return CGFloat($0) / 2.0
     }
     
     private let kMoveDuration: TimeInterval = 0.25
@@ -72,14 +72,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
-                                  ARSCNDebugOptions.showWorldOrigin
-        ]
+//        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
+//                                  ARSCNDebugOptions.showWorldOrigin
+//        ]
         
         scoreLabel.font = UIFont(name: "HelveticaNeue", size: 30.0)
         scoreLabel.textColor = .white
         sceneView.addSubview(scoreLabel)
-        print("here")
         restartGame()
     }
     
@@ -98,7 +97,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
         bottleNode.removeFromParentNode()
         boxNodes.removeAll()
-        print("removed")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -200,7 +198,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             node.position = realPosition
         } else {
             nextDirection = NextDirection(rawValue: Int.random(in: 0...1))!
-            let deltaDistance = Double.random(in: 0.25...0.5)
+            let deltaDistance = Double.random(in: 0.5...0.75)
             if nextDirection == .left {
                 node.position = SCNVector3(realPosition.x + Float(deltaDistance), realPosition.y, realPosition.z)
             } else {
