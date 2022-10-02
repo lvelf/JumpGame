@@ -241,6 +241,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if maskTouch {
             bottleNode.scaleHeight()
+            //bottleNode.playPressMusic()
         }
     }
 

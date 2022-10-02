@@ -63,6 +63,17 @@ class BottleNode: SCNNode {
         }
     }
     
+    func playPressMusic() {
+        if let source = SCNAudioSource(fileNamed: "presssound") {
+            print("why?")
+            let action = SCNAction.playAudio(source, waitForCompletion: false)
+            coneNode.runAction(action)
+        } else {
+            print("no where")
+            return
+        }
+    }
+    
     func recover() {
         sphereNode.position = SCNVector3(0, coneNodeHeight / 2.0, 0)
         (coneNode.geometry as! SCNCone).height = coneNodeHeight
