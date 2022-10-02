@@ -13,6 +13,14 @@
 		0C03CA3128E91A410080E54D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C03CA2F28E91A410080E54D /* Main.storyboard */; };
 		0C03CA3328E91A420080E54D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C03CA3228E91A420080E54D /* Assets.xcassets */; };
 		0C03CA3628E91A420080E54D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C03CA3428E91A420080E54D /* LaunchScreen.storyboard */; };
+		0C03CA4128E91CDC0080E54D /* BottleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4028E91CDC0080E54D /* BottleNode.swift */; };
+		0C03CA4628E91F5A0080E54D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4528E91F5A0080E54D /* UIColorExtension.swift */; };
+		0C03CA4828E920AA0080E54D /* SCNVector3Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4728E920AA0080E54D /* SCNVector3Extension.swift */; };
+		0C03CA4A28E921D50080E54D /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4928E921D50080E54D /* SCNNodeExtension.swift */; };
+		0C03CA4C28E923060080E54D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4B28E923060080E54D /* UIViewControllerExtension.swift */; };
+		0C03CA4E28E923DB0080E54D /* NextDirectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4D28E923DB0080E54D /* NextDirectionEnum.swift */; };
+		0C03CA5028E924460080E54D /* ScoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA4F28E924460080E54D /* ScoreHelper.swift */; };
+		0C03CA5228E925EE0080E54D /* BubbleTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C03CA5128E925EE0080E54D /* BubbleTextNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +31,14 @@
 		0C03CA3028E91A410080E54D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C03CA3228E91A420080E54D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C03CA3528E91A420080E54D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0C03CA4028E91CDC0080E54D /* BottleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNode.swift; sourceTree = "<group>"; };
+		0C03CA4528E91F5A0080E54D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		0C03CA4728E920AA0080E54D /* SCNVector3Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extension.swift; sourceTree = "<group>"; };
+		0C03CA4928E921D50080E54D /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
+		0C03CA4B28E923060080E54D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		0C03CA4D28E923DB0080E54D /* NextDirectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDirectionEnum.swift; sourceTree = "<group>"; };
+		0C03CA4F28E924460080E54D /* ScoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHelper.swift; sourceTree = "<group>"; };
+		0C03CA5128E925EE0080E54D /* BubbleTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,14 +71,30 @@
 		0C03CA2828E91A410080E54D /* JumpGame */ = {
 			isa = PBXGroup;
 			children = (
+				0C03CA5128E925EE0080E54D /* BubbleTextNode.swift */,
+				0C03CA4F28E924460080E54D /* ScoreHelper.swift */,
+				0C03CA4D28E923DB0080E54D /* NextDirectionEnum.swift */,
+				0C03CA4028E91CDC0080E54D /* BottleNode.swift */,
 				0C03CA2928E91A410080E54D /* AppDelegate.swift */,
-				0C03CA2B28E91A410080E54D /* art.scnassets */,
 				0C03CA2D28E91A410080E54D /* ViewController.swift */,
+				0C03CA4428E91F360080E54D /* Extension */,
+				0C03CA2B28E91A410080E54D /* art.scnassets */,
 				0C03CA2F28E91A410080E54D /* Main.storyboard */,
 				0C03CA3228E91A420080E54D /* Assets.xcassets */,
 				0C03CA3428E91A420080E54D /* LaunchScreen.storyboard */,
 			);
 			path = JumpGame;
+			sourceTree = "<group>";
+		};
+		0C03CA4428E91F360080E54D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0C03CA4528E91F5A0080E54D /* UIColorExtension.swift */,
+				0C03CA4728E920AA0080E54D /* SCNVector3Extension.swift */,
+				0C03CA4928E921D50080E54D /* SCNNodeExtension.swift */,
+				0C03CA4B28E923060080E54D /* UIViewControllerExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +169,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C03CA4E28E923DB0080E54D /* NextDirectionEnum.swift in Sources */,
 				0C03CA2E28E91A410080E54D /* ViewController.swift in Sources */,
+				0C03CA4828E920AA0080E54D /* SCNVector3Extension.swift in Sources */,
+				0C03CA4628E91F5A0080E54D /* UIColorExtension.swift in Sources */,
+				0C03CA5228E925EE0080E54D /* BubbleTextNode.swift in Sources */,
+				0C03CA4C28E923060080E54D /* UIViewControllerExtension.swift in Sources */,
+				0C03CA5028E924460080E54D /* ScoreHelper.swift in Sources */,
 				0C03CA2A28E91A410080E54D /* AppDelegate.swift in Sources */,
+				0C03CA4128E91CDC0080E54D /* BottleNode.swift in Sources */,
+				0C03CA4A28E921D50080E54D /* SCNNodeExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +335,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,6 +366,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
