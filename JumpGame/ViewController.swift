@@ -13,6 +13,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     private var currentAnchor: ARAnchor?
+    private var button = UIButton()
     
     private var boxNodes: [SCNNode] = []
     private lazy var bottleNode: BottleNode = {
@@ -60,6 +61,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        configureRankingButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -261,3 +264,152 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
     }
 }
+
+extension ViewController {
+    func configureRankingButton() {
+        
+        //do some basic operation to Nav button
+        button.setTitle("Go To Ranking List", for: .normal)
+        //view.addSubview(button)
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.frame = CGRect(x: 100, y: 100, width: 200, height: 52)
+        sceneView.addSubview(button)
+        //when tap led to Nav Controller
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "ranking list", style: .plain, target: self, action: #selector(didTapButton))
+    }
+    
+    @objc private func didTapButton() {
+        let rootVC = RankingListViewController.shared
+        let navVC = UINavigationController(rootViewController: rootVC)
+        
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+    }
+}
+
+struct HeaderItem: Hashable,Comparable {
+    let score: Int
+    
+    init(score: Int) {
+        self.score = score
+    }
+    
+    static func < (lhs: HeaderItem,rhs: HeaderItem) -> Bool {
+        return lhs.score > rhs.score
+    }
+}
+
+enum ListItem: Hashable {
+    case header(HeaderItem)
+}
+
+
+
+class RankingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    static private var sharedInstance: RankingListViewController?
+    
+    static public var shared: RankingListViewController{
+        if RankingListViewController.sharedInstance == nil {
+            RankingListViewController.sharedInstance = RankingListViewController()
+        }
+        return RankingListViewController.sharedInstance!
+    }
+    public var rankingList:[HeaderItem] = []
+        
+    var tableView: UITableView!
+    
+   
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "rankingList"
+        
+        if tableView == nil {
+            tableView = UITableView(frame: CGRect())
+        }
+        
+        
+        //do some operations to second view
+        
+        configureTableView()
+        //add another button to get to other viewController
+        configureDismissButton()
+    }
+    
+    func configureTableView() {
+        
+        DispatchQueue.main.async {
+            self.view.addSubview(self.tableView)
+            
+            self.tableView.translatesAutoresizingMaskIntoConstraints = false
+            
+            
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+            self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+            
+            self.tableView.backgroundColor = .white
+            
+            self.tableView.register(MyCell.self, forCellReuseIdentifier: "cell")
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+        }
+        
+       
+        
+    }
+    
+    private func configureDismissButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
+    }
+    
+    @objc private func dismissSelf() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rankingList.count
+    }
+    
+    @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCell
+            cell.configureView(number: rankingList[indexPath.row].score)
+            return cell
+        }
+    
+    @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.item)
+    }
+    
+    public func reloadData() {
+        DispatchQueue.main.async {
+            if self.tableView == nil {
+                self.tableView = UITableView(frame: CGRect())
+            }
+            self.tableView.reloadData()
+        }
+
+    }
+}
+
+class MyCell: UITableViewCell {
+    let label = UILabel()
+    
+    func configureView(number: Int) {
+        contentView.addSubview(label)
+        label.text = String(number)
+        label.frame = contentView.frame
+    }
+}
+
+
+
+
+

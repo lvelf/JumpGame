@@ -26,5 +26,9 @@ class ScoreHelper: NSObject {
             UserDefaults.standard.set(score, forKey: kHeightScoreKey)
             UserDefaults.standard.synchronize()
         }
+        RankingListViewController.shared.rankingList.append(HeaderItem(score: score))
+        RankingListViewController.shared.rankingList.sort()
+        RankingListViewController.shared.reloadData()
+        print("new score")
     }
 }
